@@ -1,0 +1,92 @@
+{% extends "pizza/base.html" %}
+{% block content %}
+        <div class="navbar-nav">
+            <button type="button" class="btn btn-secondary active" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Your Size</button>
+        </div>
+        </div>
+        </div>
+        </nav>
+        </header>
+        <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-12 d-inline-flex justify-content-center ">
+                <form class="border  needs-validation p-3 mb-5 bg-white rounded " action = "{% url 'pizza-create' %}" 
+                method = "POST" >{% csrf_token %} 
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Creator Name</label>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="@Pramod Redkar" required>
+                        </div>
+                
+                        <div class="form-group col-md-6">
+                            <label for="title">Title</label>
+                            <input type="text" name="title" required class="form-control" id="title" placeholder="@FarmHouse Pizza" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="size">Size</label>
+                            <select class="form-control" name="size" id="type">
+                                {% for size in sizes%}
+                                <option value='{{size}}'>{{size}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+            
+                        <div class="form-group col-md-6">
+                            <label for="type">Select Type</label>
+                            <select class="form-control" name="type" id="type">
+                                <option value="Regular">Regular</option>
+                                <option value="Square">Square</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" name="description"id="description" rows="3" placeholder="@It is delicoius" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="toppings">Add Your Toppings</label>
+                        <textarea class="form-control" name="toppings" id="toppings" rows="3" placeholder="@olives,tomato,...." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-secondary btn-block">Add Pizza</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ADD YOUR OWN SIZE</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action = "{% url 'pizza-create' %}" 
+            method = "POST" >{% csrf_token %} 
+                <div class="modal-body row">
+                    <div class="form-group col-md-6">
+                        <label for="type">Size</label>
+                        <input type="text"  name="add_size" class="form-control" id="add_size" placeholder="@Enter your desired size :)" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">ADD</button>
+                </div>
+            </form>
+            </div>
+            </div>
+            </div>
+        </main>
+    
+{% endblock content %}

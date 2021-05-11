@@ -1,0 +1,21 @@
+{% extends "pizza/base.html" %}
+{% block content %}
+    <div class="navbar-nav">
+        <button type="button" class="btn btn-secondary active" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Apply Filter</button>
+    </div>
+    </div>
+    </div>
+    </nav>
+    </header>
+    <main role="main" class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Page Not found</h1>
+            <p class="lead">The page that you are looking is not available </p>
+            <hr class="my-4">
+            <p>Try to go the home page by clicking below button</p>
+            <p class="lead">
+              <a class="btn btn-primary " href="{% url 'pizza-home'%}" role="button"> PIZZA HOME</a>
+            </p>
+          </div>
+    </main>
+{% endblock content %}

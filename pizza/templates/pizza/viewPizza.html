@@ -1,0 +1,85 @@
+{% extends "pizza/base.html" %}
+{% block content %}
+        <div class="navbar-nav">
+
+        </div>
+        </div>
+        </div>
+        </nav>
+        </header>
+        <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-12 d-inline-flex justify-content-center ">
+                <form class="border  needs-validation p-3 mb-5 bg-white rounded " action = "{% url 'pizza-update' update_id=id %}" 
+                method = "POST" >{% csrf_token %} 
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Creator Name</label>
+                            <input type="text" name="name" class="form-control" id="name" value="{{pizza.name}}" placeholder="name" readonly>
+                        </div>
+                
+                        <div class="form-group col-md-6">
+                            <label for="title">Title</label>
+                            <input type="text" name="title"  class="form-control" id="title" value="{{pizza.title}}" placeholder="title"  readonly>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="size">Size</label>
+                            <input type="text" name="size" class="form-control" id="size" value="{{pizza.size}}" placeholder="size" readonly>
+                        </div>
+            
+                        <div class="form-group col-md-6">
+                            <label for="type">Type</label>
+                            <input type="text" name="size" class="form-control" id="size" value="{{pizza.type}}" placeholder="size" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" name="description"id="description" rows="3" value="{{pizza.description}}" placeholder="{{pizza.description}}" readonly >{{pizza.description}}</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="toppings">Add Your Toppings</label>
+                        <textarea class="form-control" name="toppings" id="toppings" value="{{pizza.toppings}}"rows="3" placeholder="{{pizza.toppings}}" readonly >{{pizza.toppings}}</textarea>
+                    </div>
+
+                    <div class="form-group row d-flex justify-content-center p-3 mt-1">
+                        <a type="button" href="{% url 'pizza-home' %}" class="btn btn-warning  col-md-4  btn-sm ">CANCEL</a>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ADD YOUR OWN SIZE</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action = "{% url 'pizza-update' update_id=id %}"
+            method = "POST" >{% csrf_token %} 
+                <div class="modal-body row">
+                    <div class="form-group col-md-6">
+                        <label for="type">Size</label>
+                        <input type="text"  name="add_size" class="form-control" id="add_size" placeholder="@Enter your desired size :)" >
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">ADD</button>
+                </div>
+            </form>
+            </div>
+            </div>
+            </div>
+        </main>
+    
+{% endblock content %}

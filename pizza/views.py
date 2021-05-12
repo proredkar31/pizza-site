@@ -10,7 +10,7 @@ def error_404_view(request,exception):
     return render(request,'404.html')
 
 def mongoCollection(table):
-    client = MongoClient("mongodb+srv://<username>:<password>@cluster0.osb9c.mongodb.net/test?retryWrites=true&w=majority")
+    client = MongoClient("mongodb+srv://promodred31:fmmMnPkAQ4Lawg0Y@cluster0.osb9c.mongodb.net/test?retryWrites=true&w=majority")
     db = client["pizza"]
     col= db[table]
     return col

@@ -8,5 +8,4 @@ Steps to run:
 
 > visit http://127.0.0.1:8000/pizza/ 
 
-
 The images at image folder will guide you :)
